@@ -23,8 +23,6 @@ public class BidOnJobServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("=========001100zz=========");
-    	processRequest(request, response);
-
         processRequest(request, response);
     }
 
@@ -37,8 +35,6 @@ public class BidOnJobServlet extends HttpServlet {
 
 //        request.setAttribute("activePage", "bidOnJob");
         request.getRequestDispatcher("bidOnJob.jsp").forward(request, response);
-
-        request.getRequestDispatcher("finalBidList.jsp").forward(request, response);
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
