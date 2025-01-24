@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>bid_project</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  <servlet>
+	    <servlet-name>RegistrationServlet</servlet-name>
+	    <servlet-class>RegistrationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>RegistrationServlet</servlet-name>
+	    <url-pattern>/RegistrationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>SubmitServelet</servlet-name>
+	    <servlet-class>SubmitServelet</servlet-class>
+	</servlet>
+	<session-config>
+    <session-timeout>30</session-timeout> <!-- Session timeout in minutes -->
+</session-config>
+	<servlet-mapping>
+	    <servlet-name>SubmitServelet</servlet-name>
+	    <url-pattern>/SubmitServelet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>BidSubmit</servlet-name>
+	    <servlet-class>BidSubmit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>BidSubmit</servlet-name>
+	    <url-pattern>/BidSubmit</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>SetPassword</servlet-name>
+	    <servlet-class>SetPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>SetPassword</servlet-name>
+	    <url-pattern>/SetPassword</url-pattern>
+	</servlet-mapping>
+	<servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.yourpackage.LogoutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+	    <servlet-name>JobList_Servlet</servlet-name>
+	    <servlet-class>JobList_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>JobList_Servlet</servlet-name>
+	    <url-pattern>/JobList_Servlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>PostJobServlet</servlet-name>
+	    <servlet-class>PostJobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>PostJobServlet</servlet-name>
+	    <url-pattern>/PostJobServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>WishlistServlet</servlet-name>
+	    <servlet-class>WishlistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>WishlistServlet</servlet-name>
+	    <url-pattern>/WishlistServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>JobDetailsServlet</servlet-name>
+	    <servlet-class>JobDetailsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>JobDetailsServlet</servlet-name>
+	    <url-pattern>/JobDetailsServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>FindJobServlet</servlet-name>
+	    <servlet-class>FindJobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>FindJobServlet</servlet-name>
+	    <url-pattern>/FindJobServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>BidOnJobServlet</servlet-name>
+	    <servlet-class>BidOnJobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>BidOnJobServlet</servlet-name>
+	    <url-pattern>/BidOnJobServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>DBConnection</servlet-name>
+	    <servlet-class>DBConnection</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>DBConnection</servlet-name>
+	    <url-pattern>/DBConnection</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+</web-app>
