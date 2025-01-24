@@ -4,7 +4,6 @@
 <%
 request.setAttribute("activePage", "findJob");
 %>
-
 <jsp:include page="common/leftPanel.jsp" />
 <jsp:include page="common/header.jsp" />
 
@@ -23,7 +22,6 @@ request.setAttribute("activePage", "findJob");
 	        response.sendRedirect("login.jsp");
 	        return;
 	    }
-	
 %>
 
 <div align="center">
@@ -58,13 +56,10 @@ request.setAttribute("activePage", "findJob");
 		</td>
 	</tr>
 	<%
-    
 	        }
 	    }
 %>
 </table>
-
-
 
 <script>
 function updateJobStatus(job_id, status) {
@@ -72,7 +67,5 @@ function updateJobStatus(job_id, status) {
     window.location.href = "FindJobServlet?job_id=" + job_id + "&status=" + status;
 }
 </script>
-
-
 
 <jsp:include page="common/footer.jsp" />

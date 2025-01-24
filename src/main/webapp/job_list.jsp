@@ -8,7 +8,6 @@ request.setAttribute("activePage", "jobList");
 <jsp:include page="common/leftPanel.jsp" />
 <jsp:include page="common/header.jsp" />
 
-
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -66,37 +65,47 @@ request.setAttribute("activePage", "jobList");
 
 			for (Map<String, Object> job : jobList) {
 		%>
-
-	<tr>
-		<td><%=job.get("job_title")%></td>
-		<td><%=job.get("created_at")%></td>
-		<td><%=job.get("status")%></td>
-
-		<td>
-			<select name="action" id="action"
-				onchange="updateJobStatus(<%=job.get("id")%>,this.value)">
+		<tr>
+			<td><%=job.get("job_title")%></td>
+			<td><%=job.get("created_at")%></td>
+			<td><%=job.get("status")%></td>
+			<td>
+				<select name="action" id="action" onchange="updateJobStatus(<%=job.get("id")%>,this.value)">
 					<option value="closed"
 						<%=(job.get("status").equals("closed") ? "selected" : "")%>>Close</option>
 					<option value="hold"
 						<%=(job.get("status").equals("hold") ? "selected" : "")%>>Hold</option>
 					<option value="assigned"
 						<%=(job.get("status").equals("assigned") ? "selected" : "")%>>Assigned</option>
-			</select>
-			<button onclick="location.href='PostJobServlet?job_id=<%=job.get("id")%>'">Edit</button>
-		</td>
-		<td>
-			<form action="JobDetailsServlet" method="get">
-				<input type="hidden" name="job_id" value="<%=job.get("id")%>">
-				<input type="submit" value="Details">
-			</form>
-		</td>
-	</tr>
-
-	<%
+				</select>
+				<button onclick="location.href='PostJobServlet?job_id=<%=job.get("id")%>'">Edit</button>
+			</td>
+			<td>
+				<select name="action" id="action" onchange="updateJobStatus(<%=job.get("id")%>,this.value)">
+					<option value="closed"
+						<%=(job.get("status").equals("closed") ? "selected" : "")%>>Close</option>
+					<option value="hold"
+						<%=(job.get("status").equals("hold") ? "selected" : "")%>>Hold</option>
+					<option value="assigned"
+						<%=(job.get("status").equals("assigned") ? "selected" : "")%>>Assigned</option>
+				</select>
+			</td>
+			<td>
+				<button onclick="location.href='PostJobServlet?job_id=<%=job.get("id")%>'">Edit</button>
+			</td>
+			<td>
+				<form action="JobDetailsServlet" method="get">
+					<input type="hidden" name="job_id" value="<%=job.get("id")%>">
+					<input type="submit" value="Details">
+				</form>
+			</td>
+		</tr>
+	
+		<%
+				}
 			}
-		}
-		%>
-		</tbody>
+			%>
+	</tbody>
 </table>
 
 <script>
@@ -111,8 +120,11 @@ $(document).ready(function() {
 	    "searching": true,
 	  });
 	});
+
+function updateJobStatus(job_id, status) {
+	//alert("PostJobServlet?job_id="+job_id+"&status=" + status);
+    window.location.href = "PostJobServlet?job_id="+job_id+"&status=" + status;
+}
 </script>
-
-
 
 <jsp:include page="common/footer.jsp" />

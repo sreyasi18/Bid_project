@@ -2,11 +2,14 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page
 	import="java.sql.*, javax.servlet.http.*, javax.servlet.*, java.util.*"%>
+<<<<<<< HEAD
 	<a href="BidOnJobServlet" 
    class="nav-item nav-link ${activePage == 'BidOnJobServlet' ? 'active' : ''}">
     <i class="fa fa-gavel me-2"></i>My Bids
 </a>
 
+=======
+>>>>>>> f03926084126c9a944e639dc6f041b6ead722873
 <!DOCTYPE html>
 <html>
 <head>

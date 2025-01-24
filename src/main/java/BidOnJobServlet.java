@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +24,8 @@ public class BidOnJobServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("=========001100zz=========");
     	processRequest(request, response);
-    	
 
+        processRequest(request, response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,10 +34,12 @@ public class BidOnJobServlet extends HttpServlet {
 
         List<Map<String, Object>> jobList = fetchJobListFromDatabase(userId);
         request.setAttribute("job_list", jobList);
+
 //        request.setAttribute("activePage", "bidOnJob");
         request.getRequestDispatcher("bidOnJob.jsp").forward(request, response);
-    }
 
+        request.getRequestDispatcher("finalBidList.jsp").forward(request, response);
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -46,7 +47,6 @@ public class BidOnJobServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
             return;
         }
-        
 
         Integer userId = (Integer) session.getAttribute("user_id");
         int jobId = Integer.parseInt(request.getParameter("job_id"));
@@ -59,7 +59,10 @@ public class BidOnJobServlet extends HttpServlet {
         // Retrieve and display updated bid list
         List<Map<String, Object>> jobList = fetchJobListFromDatabase(userId);
         request.setAttribute("job_list", jobList);
+
         request.getRequestDispatcher("bidOnJob.jsp").forward(request, response);
+
+//        request.getRequestDispatcher("finalBidList.jsp").forward(request, response);
     }
 
     // Method to insert a new bid into the job_bid table
@@ -86,15 +89,11 @@ public class BidOnJobServlet extends HttpServlet {
                     "FROM job_bid " +
                     "JOIN job ON job_bid.job_id = job.id " +
                     "WHERE job_bid.user_id = ?";
-
-
-                   
-                   
-    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    
+    		try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, userId);
                 try (ResultSet result = pstmt.executeQuery()) {
                     while (result.next()) {
-                    	
                         Map<String, Object> job = new HashMap<>();
                         job.put("job_id", result.getInt("job_id"));
                         job.put("job_title", result.getString("job_title"));
